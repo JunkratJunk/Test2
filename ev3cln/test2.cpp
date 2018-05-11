@@ -1,13 +1,17 @@
 #include <vector>
-#include "client_udp.h"
+#include "ev3_cln_udp.h"
+#include <iostream>
+#include <cstring>
+#include <cstdio>
 
 int main(int argc, char *argv[])
 {
-	(void) argc;
-	(void) argv;
-	ClientUdp cln("127.0.0.1", 9999);
-	cln.Send("test", 5);
-	std::vector<char> buf(5);
-	cln.Recv(&buf[0], 5);
-	return 0;
+    (void) argc;
+    (void) argv;
+    Ev3ClnUdp cln("192.168.100.15", 9999);
+    if (!cln.Connect()) 
+        std::cout << "can not connect" << std::endl;
+    Rect<int> rect = cln.GetPixyData();
+    std::cout << rect.left << ", " << rect.top << ", " << rect.width << ", " << rect.height << std::endl;
+    return 0;
 }

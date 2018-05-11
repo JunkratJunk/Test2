@@ -9,7 +9,7 @@ class Ev3ClnUdp
 	ClientUdp cln_;
 public:
 	Ev3ClnUdp(const char* host, unsigned short port);
-	void Connect();
+	bool Connect();
 	Rect<int> GetPixyData();
 };
 

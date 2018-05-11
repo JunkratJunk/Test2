@@ -9,6 +9,7 @@
 #include <netdb.h>
 #include <unistd.h>
 
+#include "../port_reader.h"
 #include "client_udp.h"
 
 ClientUdp::ClientUdp(const char* host, unsigned short port)
@@ -55,8 +56,7 @@ int ClientUdp::Send(const char* buffer, unsigned int size)
 	return sendto(sockfd_, buffer, size, 0, (struct sockaddr *)&serverAddr_, sizeof(serverAddr_));
 }
 
-int ClientUdp::Recv(char* buffer, unsigned int size)
+std::vector<char> ClientUdp::Recv()
 {
-	socklen_t len;
-	return recvfrom(sockfd_, buffer, size, 0, (struct sockaddr *)&clientAddr_, &len);
+    return port_reader(sockfd_, (sockaddr*)&clientAddr_);
 }

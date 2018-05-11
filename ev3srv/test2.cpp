@@ -42,6 +42,8 @@ int main()
 			std::cout << std::ctime(&tm_c) << "Not rect" << std::endl;
 	}
 	
+        std::cout << "wait to stop..." << std::endl;
+        std::getchar();
         udp.Stop();
 	std::cout << "( EV3 ) Bye!" << std::endl;
 	return EXIT_SUCCESS;

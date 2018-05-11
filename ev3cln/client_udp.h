@@ -12,7 +12,7 @@ public:
 	ClientUdp(const char* host, unsigned short port);
 	~ClientUdp();
 	int Send(const char* buffer, unsigned int size);
-	int Recv(char* buffer, unsigned int size);
+	std::vector<char> Recv();
 };
 
 #endif // CLIENT_UDP_H

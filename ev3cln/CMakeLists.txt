@@ -27,6 +27,7 @@ set(SRC_CLN_CPP
     ev3_cln_udp.h
     ev3_cln_udp.cpp
     test2.cpp
+    ../port_reader.h
     )
 
 add_executable(test2 ${SRC_CLN_CPP})
