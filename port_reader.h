@@ -19,16 +19,17 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <unistd.h>
+#include <iostream>
 
-std::vector <char> port_reader (int sockfd, sockaddr* client_addr)
+inline std::vector <char> port_reader(int sockfd, sockaddr* client_addr) 
 {
     socklen_t len;
     std::vector<char> buf;
-    while (true) 
-    {
+    while (true) {
         char t;
         if (recvfrom(sockfd, &t, 1, 0, client_addr, &len) != 1)
-            throw std::runtime_error ("can not read socket");
+            throw std::runtime_error("can not read socket");
+        std::cout << "." << t << std::endl;
         buf.push_back(t);
         if (t == ';')
             break;
