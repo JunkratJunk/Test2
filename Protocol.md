@@ -1,4 +1,4 @@
-End of command ";"
+The command is string. End of command ";".
 
 | client  | server                          |
 | ------- | ------------------------------- |
