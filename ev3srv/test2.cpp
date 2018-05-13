@@ -16,7 +16,7 @@
 
 int main()
 {
-	std::cout << "Waiting the EV3 brick ver 1.0.0.0 online..." << std::endl;
+	std::cout << "Waiting the EV3 brick ver 1.0.0.1 online..." << std::endl;
 	// EV3 initialization
 	EV3 ev3;
 	Ev3SrvUdp udp(9999, 10000);

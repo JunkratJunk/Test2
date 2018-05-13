@@ -8,6 +8,7 @@ void Ev3SrvUdpThread(Ev3SrvUdp* obj)
 {
 	while (obj->is_not_stopped_)
 	{
+		std::cout << "spinning" << obj << std::endl;
 		std::vector<char> ret = obj->srv_.Recv();
 		std::string t(ret.begin(), ret.end());
 		std::cout << "recv from client " << t << std::endl;
@@ -26,6 +27,7 @@ void Ev3SrvUdpThread(Ev3SrvUdp* obj)
 			obj->rects_.pop();
 		}
 	}
+	std::cout << "exit_thread" << std::endl;
 }
 
 Ev3SrvUdp::Ev3SrvUdp(unsigned short port, size_t length)

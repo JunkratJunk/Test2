@@ -12,7 +12,7 @@ Ev3ClnUdp::Ev3ClnUdp(const char* host, unsigned short port)
 
 bool Ev3ClnUdp::Connect()
 {
-    cln_.Send("connect;", 8);
+	int x = cln_.Send("connect;", 8);
     std::vector<char> ret = cln_.Recv();
     return std::memcmp(&ret[0], "ok;", 3)==0;
 }

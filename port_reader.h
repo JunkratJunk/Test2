@@ -23,11 +23,17 @@
 
 inline std::vector <char> port_reader(int sockfd, sockaddr* client_addr) 
 {
-    socklen_t len;
+    //socklen_t len = sizeof (*client_addr);
     std::vector<char> buf;
-    while (true) {
+    std::cout << "port_reader0" << std::endl;
+    while (true) 
+    {
+        std::cout << "port_reader" << std::endl;
         char t;
-        if (recvfrom(sockfd, &t, 1, 0, client_addr, &len) != 1)
+        //int x = recvfrom(sockfd, &t, 1, 0, client_addr, &len);
+        int x = recv(sockfd, &t, 1, 0);
+        std::cout << x << std::endl;
+        if (x != 1)
             throw std::runtime_error("can not read socket");
         std::cout << "." << t << std::endl;
         buf.push_back(t);
